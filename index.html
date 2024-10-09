@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Calorie and Nutrition Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Daily Calorie and Nutrition Calculator</h1>
+
+        <label for="calorieLimit">Enter your daily calorie limit:</label>
+        <input type="number" id="calorieLimit" value="2000" onchange="calculateTotal()">
+
+        <!-- Meal 1 -->
+        <h2>Meal 1</h2>
+        <label for="meal1Category">Category:</label>
+        <select id="meal1Category" onchange="updateFoodOptions('meal1')">
+            <option value="">--Select Category--</option>
+            <option value="Bread">Bread</option>
+            <option value="Cereals and Grains">Cereals and Grains</option>
+        </select>
+
+        <label for="meal1Food">Type of Food:</label>
+        <select id="meal1Food" onchange="calculateMeal('meal1')">
+            <option value="">--Select Food--</option>
+        </select>
+
+        <label for="meal1ServingSize">Serving Size:</label>
+        <input type="number" id="meal1ServingSize" placeholder="Serving Size" onchange="calculateMeal('meal1')">
+
+        <label for="meal1Unit">Unit:</label>
+        <select id="meal1Unit" onchange="calculateMeal('meal1')">
+            <option value="loaf">Loaf</option>
+            <option value="cm">Cm</option>
+            <option value="cup">Cup</option>
+        </select>
+
+        <div class="inline-label-input">
+            <label for="meal1Grams">Grams:</label>
+            <input type="number" id="meal1Grams" placeholder="Grams" onchange="calculateMeal('meal1')">
+        </div>
+
+        <p>Meal 1 Total Calories: <span id="meal1Calories">0</span> kcal</p>
+        <p>Meal 1 Total Carbs: <span id="meal1Carbs">0</span> g</p>
+        <p>Meal 1 Total Protein: <span id="meal1Protein">0</span> g</p>
+        <p>Meal 1 Total Fats: <span id="meal1Fats">0</span> g</p>
+
+        <!-- Custom adjustment for Meal 1 -->
+        <h3>Adjust Macronutrients for Meal 1</h3>
+        <label for="meal1CustomCarbs">Custom Carbs (g):</label>
+        <input type="number" id="meal1CustomCarbs" placeholder="Enter custom carbs" onchange="adjustMacros('meal1')"><br>
+
+        <label for="meal1CustomProtein">Custom Protein (g):</label>
+        <input type="number" id="meal1CustomProtein" placeholder="Enter custom protein" onchange="adjustMacros('meal1')"><br>
+
+        <label for="meal1CustomFats">Custom Fats (g):</label>
+        <input type="number" id="meal1CustomFats" placeholder="Enter custom fats" onchange="adjustMacros('meal1')"><br>
+        <button onclick="finalizeAdjustments('meal1')">Finalize Adjustments for Meal 1</button>
+
+        <!-- Repeat for Meal 2 and Meal 3 -->
+        <!-- Meal 2 -->
+        <h2>Meal 2</h2>
+        <label for="meal2Category">Category:</label>
+        <select id="meal2Category" onchange="updateFoodOptions('meal2')">
+            <option value="">--Select Category--</option>
+            <option value="Bread">Bread</option>
+            <option value="Cereals and Grains">Cereals and Grains</option>
+        </select>
+
+        <label for="meal2Food">Type of Food:</label>
+        <select id="meal2Food" onchange="calculateMeal('meal2')">
+            <option value="">--Select Food--</option>
+        </select>
+
+        <label for="meal2ServingSize">Serving Size:</label>
+        <input type="number" id="meal2ServingSize" placeholder="Serving Size" onchange="calculateMeal('meal2')">
+
+        <label for="meal2Unit">Unit:</label>
+        <select id="meal2Unit" onchange="calculateMeal('meal2')">
+            <option value="loaf">Loaf</option>
+            <option value="cm">Cm</option>
+            <option value="cup">Cup</option>
+        </select>
+
+        <div class="inline-label-input">
+            <label for="meal2Grams">Grams:</label>
+            <input type="number" id="meal2Grams" placeholder="Grams" onchange="calculateMeal('meal2')">
+        </div>
+
+        <p>Meal 2 Total Calories: <span id="meal2Calories">0</span> kcal</p>
+        <p>Meal 2 Total Carbs: <span id="meal2Carbs">0</span> g</p>
+        <p>Meal 2 Total Protein: <span id="meal2Protein">0</span> g</p>
+        <p>Meal 2 Total Fats: <span id="meal2Fats">0</span> g</p>
+
+        <!-- Custom adjustment for Meal 2 -->
+        <h3>Adjust Macronutrients for Meal 2</h3>
+        <label for="meal2CustomCarbs">Custom Carbs (g):</label>
+        <input type="number" id="meal2CustomCarbs" placeholder="Enter custom carbs" onchange="adjustMacros('meal2')"><br>
+
+        <label for="meal2CustomProtein">Custom Protein (g):</label>
+        <input type="number" id="meal2CustomProtein" placeholder="Enter custom protein" onchange="adjustMacros('meal2')"><br>
+
+        <label for="meal2CustomFats">Custom Fats (g):</label>
+        <input type="number" id="meal2CustomFats" placeholder="Enter custom fats" onchange="adjustMacros('meal2')"><br>
+        <button onclick="finalizeAdjustments('meal2')">Finalize Adjustments for Meal 2</button>
+
+        <!-- Meal 3 -->
+        <h2>Meal 3</h2>
+        <label for="meal3Category">Category:</label>
+        <select id="meal3Category" onchange="updateFoodOptions('meal3')">
+            <option value="">--Select Category--</option>
+            <option value="Bread">Bread</option>
+            <option value="Cereals and Grains">Cereals and Grains</option>
+        </select>
+
+        <label for="meal3Food">Type of Food:</label>
+        <select id="meal3Food" onchange="calculateMeal('meal3')">
+            <option value="">--Select Food--</option>
+        </select>
+
+        <label for="meal3ServingSize">Serving Size:</label>
+        <input type="number" id="meal3ServingSize" placeholder="Serving Size" onchange="calculateMeal('meal3')">
+
+        <label for="meal3Unit">Unit:</label>
+        <select id="meal3Unit" onchange="calculateMeal('meal3')">
+            <option value="loaf">Loaf</option>
+            <option value="cm">Cm</option>
+            <option value="cup">Cup</option>
+        </select>
+
+        <div class="inline-label-input">
+            <label for="meal3Grams">Grams:</label>
+            <input type="number" id="meal3Grams" placeholder="Grams" onchange="calculateMeal('meal3')">
+        </div>
+
+        <p>Meal 3 Total Calories: <span id="meal3Calories">0</span> kcal</p>
+        <p>Meal 3 Total Carbs: <span id="meal3Carbs">0</span> g</p>
+        <p>Meal 3 Total Protein: <span id="meal3Protein">0</span> g</p>
+        <p>Meal 3 Total Fats: <span id="meal3Fats">0</span> g</p>
+
+        <!-- Custom adjustment for Meal 3 -->
+        <h3>Adjust Macronutrients for Meal 3</h3>
+        <label for="meal3CustomCarbs">Custom Carbs (g):</label>
+        <input type="number" id="meal3CustomCarbs" placeholder="Enter custom carbs" onchange="adjustMacros('meal3')"><br>
+
+        <label for="meal3CustomProtein">Custom Protein (g):</label>
+        <input type="number" id="meal3CustomProtein" placeholder="Enter custom protein" onchange="adjustMacros('meal3')"><br>
+
+        <label for="meal3CustomFats">Custom Fats (g):</label>
+        <input type="number" id="meal3CustomFats" placeholder="Enter custom fats" onchange="adjustMacros('meal3')"><br>
+        <button onclick="finalizeAdjustments('meal3')">Finalize Adjustments for Meal 3</button>
+
+        <!-- Final Total -->
+        <h2>Total for All Meals</h2>
+        <p>Total Calories: <span id="totalCalories">0</span> kcal</p>
+        <p>Total Carbs: <span id="totalCarbs">0</span> g</p>
+        <p>Total Protein: <span id="totalProtein">0</span> g</p>
+        <p>Total Fats: <span id="totalFats">0</span> g</p>
+
+        <p id="calorieWarning" style="display: none; color: red;">Warning: You've exceeded your daily calorie limit!</p>
+        <p id="calorieSuccess" style="display: none; color: green;">Great job! You've hit your daily calorie goal.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
